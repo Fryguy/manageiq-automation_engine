@@ -14,7 +14,7 @@ module MiqAeEngine
 
       launch_options = build_launch_options
       $miq_ae_logger.info("Playbook Method passing options:")
-      $miq_ae_logger.log_hashes(launch_options)
+      $miq_ae_logger.log_hashes(launch_options, :filter => Vmdb::Settings.secret_filter)
 
       begin
         @stack_job = STACK_CLASS.create_job(playbook, launch_options)
